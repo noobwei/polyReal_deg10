@@ -46,6 +46,6 @@ run_experiments即运行所有攻击和验算流程的自动脚本，其中有�
 
 - summarySummary：读取所有nonce+n中的summary内容，并输出总summary csv
 - visualDir：输出文件夹完整路径可视化，适用于作为prompt给大语言模型debug
-- **run_all**：如果能确保代码持续运行，可以直接运行所有nonce开头文件夹中的run_experiments，云溪ing所有文件
+- **run_all**：如果能确保代码持续运行，可以直接运行所有nonce开头文件夹中的run_experiments，运行所有实验
 
 另外修改最高阶数可能略微复杂，修改参数较多，建议参考deg10和原始repo中代码区别。
