@@ -5,7 +5,7 @@ from scipy.optimize import bisect
 
 def inverse_calculation(coeffs: list, data_path: str) -> float:
     """计算单次实验的阈值命中率"""
-    threshold = 5e-4
+    threshold = 7e-4
     success_count = 0
     total_count = 0
 
@@ -67,7 +67,7 @@ if __name__ == "__main__":
             for row in reader:
                 sample_size = int(row[0])
                 if sample_size in [5, 10, 20]:
-                    coeffs = list(map(float, row[2:11]))
+                    coeffs = list(map(float, row[2:13]))
                     experiment_data[sample_size].append(coeffs)
     except FileNotFoundError:
         print(f"错误：结果文件 {args.results} 不存在")

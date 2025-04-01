@@ -42,16 +42,15 @@ def load_dataset(filename: str, num_samples: int = None) -> tuple:
         for row in selected_rows:
             nonce = float(row[1])
             y = float(row[2])
-            x_values.append(nonce+2.467)
+            x_values.append(nonce+2.467)  # 自动替换为 nonce+2.467 的值
             y_values.append(y)
     return np.array(x_values), np.array(y_values)
 
 
 def fit_polynomial(x: np.ndarray, y: np.ndarray) -> List[float]:
-    """进行8次多项式拟合"""
     try:
         # 执行多项式拟合（自动包含x^0到x^8）
-        coeffs = np.polyfit(x, y, deg=8)
+        coeffs = np.polyfit(x, y, deg=10)
         # 反转系数顺序为升幂排列
         return coeffs[::-1].tolist()
     except Exception as e:
@@ -60,8 +59,7 @@ def fit_polynomial(x: np.ndarray, y: np.ndarray) -> List[float]:
 
 
 def get_8th_degree_coeffs(results_dict: dict) -> List[float]:
-    """提取完整的8次多项式系数"""
-    return results_dict.get(8, [0.0] * 9)[:9]
+    return results_dict.get(10, [0.0] * 11)[:11]
 
 
 if __name__ == "__main__":
@@ -84,7 +82,7 @@ if __name__ == "__main__":
     # 保存实验结果（使用参数中的输出路径）
     with open(args.output, 'w', newline='') as f:
         writer = csv.writer(f)
-        writer.writerow(['sample_size', 'experiment_id'] + [f'coeff_{i}' for i in range(9)])
+        writer.writerow(['sample_size', 'experiment_id'] + [f'coeff_{i}' for i in range(11)])
 
         print(f"▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ EXPERIMENT START ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄")
         print(f"Input data: {args.data}")

@@ -92,7 +92,7 @@ if __name__ == "__main__":
     parser.add_argument('-o', '--output', type=str, default="polynomial_data.csv")
     args = parser.parse_args()
 
-    POLY_DEGREE = 8
+    POLY_DEGREE = 10
     X_DEC_BITS = 8
     NONCE_DEC_BITS = 4
     Y_DECIMAL = 5
